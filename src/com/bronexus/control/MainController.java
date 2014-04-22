@@ -1,26 +1,29 @@
 package com.bronexus.control;
 
 import android.content.Intent;
-import android.content.pm.ActivityInfo;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
-import android.widget.SeekBar;
-import android.widget.SeekBar.OnSeekBarChangeListener;
+import android.widget.EditText;
 import android.app.Activity;
 
 import com.example.bronexus.MainActivity;
 import com.bronexus.view.MainView;
 import com.example.bronexus.R;
+import com.bronexus.model.PlayerInfo;
+import com.example.bronexus.InfoActivity;
 
 public class MainController
 {
 	protected Activity activity;
 	protected MainView mview;
+	protected PlayerInfo player;
+	
 	public void initialize(){
 		//creating the view
 		activity.setContentView(R.layout.activity_main);
 		mview = new MainView(activity);
+		player = PlayerInfo.instance();
 		attachEvents();
 	}
 	protected void goToActivity(Class<?> activityType){
@@ -34,7 +37,29 @@ public class MainController
 		activity = mainAct;
 	}
 	
-	private void attachEvents() {
+	private void attachEvents() 
+	{
 		// handle button clicks, etc
+		
+		Button btnLookup = (Button)activity.findViewById(R.id.btnFindSummoner);
+		btnLookup.setOnClickListener(new OnClickListener()
+		{
+			public void onClick(View v)
+			{
+				EditText txtSummonerName = (EditText)activity.findViewById(R.id.txtSummonerName);
+				String newName = (txtSummonerName.getText()).toString();
+				player.setSummonerName(newName);
+				if (player.lookupSummoner() != -1)
+				{
+					goToInfo();
+				}
+			}
+		});
+	}
+	private void goToInfo()
+	{
+		Intent intent = new Intent(activity, InfoActivity.class);
+		activity.startActivity(intent);
+		activity.finish();
 	}
 }
