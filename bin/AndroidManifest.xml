@@ -22,6 +22,18 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name="com.example.bronexus.InformationActivity"
+            android:label="@string/title_activity_information" >
+        </activity>
+        <activity
+            android:name="com.example.bronexus.RuneActivity"
+            android:label="@string/title_activity_rune" >
+        </activity>
+        <activity
+            android:name="com.example.bronexus.MasteryActivity"
+            android:label="@string/title_activity_mastery" >
+        </activity>
     </application>
 
 </manifest>

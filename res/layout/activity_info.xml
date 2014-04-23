@@ -18,13 +18,30 @@
         android:textSize="10pt"
         android:textAppearance="?android:attr/textAppearanceMedium" />
 
+    <Button
+        android:id="@+id/btnRunes"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/btnMasteries"
+        android:text="@string/runes_text"
+        android:textSize="6pt" />
+
+    <Button
+        android:id="@+id/btnMasteries"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:text="@string/masteries_text"
+        android:textSize="6pt" />
+
     <LinearLayout
         android:id="@+id/linearLayout1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
+        android:layout_alignLeft="@+id/txtSummonerName"
         android:layout_below="@+id/txtSummonerName"
-        android:layout_marginTop="76dp"
+        android:layout_marginTop="27dp"
         android:orientation="vertical" >
 
         <TextView
@@ -104,22 +121,5 @@
             android:text="@string/turrets_text"
             android:textAppearance="?android:attr/textAppearanceMedium" />
     </LinearLayout>
-
-    <Button
-        android:id="@+id/btnRunes"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/btnMasteries"
-        android:text="@string/runes_text"
-        android:textSize="6pt" />
-
-    <Button
-        android:id="@+id/btnMasteries"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:text="@string/masteries_text"
-        android:textSize="6pt" />
 
 </RelativeLayout>

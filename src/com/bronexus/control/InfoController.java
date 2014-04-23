@@ -8,7 +8,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.app.Activity;
 
-import com.example.bronexus.InfoActivity;
+import com.example.bronexus.InformationActivity;
 import com.bronexus.view.InfoView;
 import com.example.bronexus.R;
 import com.bronexus.model.PlayerInfo;
@@ -34,7 +34,7 @@ public class InfoController
 		activity.startActivity(intent);
 	}
 	
-	public InfoController (InfoActivity infoAct)
+	public InfoController (InformationActivity infoAct)
 	{
 		activity = infoAct;
 	}

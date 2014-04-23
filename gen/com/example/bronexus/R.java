@@ -24,30 +24,40 @@ public final class R {
         public static final int ic_launcher=0x7f020000;
     }
     public static final class id {
-        public static final int action_settings=0x7f080010;
+        public static final int action_settings=0x7f080014;
         public static final int btnFindSummoner=0x7f08000f;
-        public static final int btnMasteries=0x7f08000e;
-        public static final int btnRunes=0x7f08000d;
-        public static final int linearLayout1=0x7f080001;
-        public static final int txtAssists=0x7f080004;
-        public static final int txtDeaths=0x7f080003;
-        public static final int txtDoubles=0x7f080005;
-        public static final int txtKills=0x7f080002;
-        public static final int txtLosses=0x7f08000a;
-        public static final int txtMinions=0x7f08000b;
-        public static final int txtPentas=0x7f080008;
-        public static final int txtQuadras=0x7f080007;
+        public static final int btnMasteries=0x7f080002;
+        public static final int btnRunes=0x7f080001;
+        public static final int button1=0x7f080011;
+        public static final int button2=0x7f080012;
+        public static final int button3=0x7f080013;
+        public static final int linearLayout1=0x7f080003;
+        public static final int textView1=0x7f080010;
+        public static final int txtAssists=0x7f080006;
+        public static final int txtDeaths=0x7f080005;
+        public static final int txtDoubles=0x7f080007;
+        public static final int txtKills=0x7f080004;
+        public static final int txtLosses=0x7f08000c;
+        public static final int txtMinions=0x7f08000d;
+        public static final int txtPentas=0x7f08000a;
+        public static final int txtQuadras=0x7f080009;
         public static final int txtSummonerName=0x7f080000;
-        public static final int txtTriples=0x7f080006;
-        public static final int txtTurrets=0x7f08000c;
-        public static final int txtWins=0x7f080009;
+        public static final int txtTriples=0x7f080008;
+        public static final int txtTurrets=0x7f08000e;
+        public static final int txtWins=0x7f08000b;
     }
     public static final class layout {
         public static final int activity_info=0x7f030000;
         public static final int activity_main=0x7f030001;
+        public static final int activity_mastery=0x7f030002;
+        public static final int activity_rune=0x7f030003;
     }
     public static final class menu {
-        public static final int main=0x7f070000;
+        public static final int info=0x7f070000;
+        public static final int information=0x7f070001;
+        public static final int main=0x7f070002;
+        public static final int mastery=0x7f070003;
+        public static final int rune=0x7f070004;
     }
     public static final class string {
         public static final int action_settings=0x7f050001;
@@ -66,6 +76,9 @@ public final class R {
         public static final int runes_text=0x7f050011;
         public static final int sum_name_text=0x7f050012;
         public static final int summ_name=0x7f050002;
+        public static final int title_activity_information=0x7f050013;
+        public static final int title_activity_mastery=0x7f050015;
+        public static final int title_activity_rune=0x7f050014;
         public static final int triples_text=0x7f05000b;
         public static final int turrets_text=0x7f05000f;
         public static final int wins_text=0x7f050008;

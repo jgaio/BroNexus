@@ -3,9 +3,9 @@
 
     <string name="app_name">BroNexus</string>
     <string name="action_settings">Settings</string>
-    <string name="summ_name">Please enter summoner name:</string><string name="lookup_sum">Look up</string><string name="hello_world">Hello world!</string>
-    
-    
+    <string name="summ_name">Please enter summoner name:</string>
+    <string name="lookup_sum">Look up</string>
+    <string name="hello_world">Hello world!</string>
     <string name="kills_text">Kills:</string>
     <string name="deaths_text">Deaths:</string>
     <string name="assist_text">Assist:</string>
@@ -20,5 +20,8 @@
     <string name="masteries_text">Masteries</string>
     <string name="runes_text">Runes</string>
     <string name="sum_name_text">Summoner Name</string>
+    <string name="title_activity_information">InformationActivity</string>
+    <string name="title_activity_rune">RuneActivity</string>
+    <string name="title_activity_mastery">MasteryActivity</string>
 
 </resources>

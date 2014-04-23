@@ -11,7 +11,7 @@ import com.example.bronexus.MainActivity;
 import com.bronexus.view.MainView;
 import com.example.bronexus.R;
 import com.bronexus.model.PlayerInfo;
-import com.example.bronexus.InfoActivity;
+import com.example.bronexus.InformationActivity;
 
 public class MainController
 {
@@ -58,7 +58,7 @@ public class MainController
 	}
 	private void goToInfo()
 	{
-		Intent intent = new Intent(activity, InfoActivity.class);
+		Intent intent = new Intent(activity, InformationActivity.class);
 		activity.startActivity(intent);
 		activity.finish();
 	}

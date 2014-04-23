@@ -5,7 +5,7 @@ import android.app.Activity;
 import android.view.Menu;
 import com.bronexus.control.InfoController;
 
-public class InfoActivity extends Activity {
+public class InformationActivity extends Activity {
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
