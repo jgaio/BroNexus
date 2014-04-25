@@ -6,6 +6,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.app.Activity;
 
 import com.example.bronexus.InformationActivity;
@@ -26,6 +27,8 @@ public class InfoController
 		player = PlayerInfo.instance();
 		fillInformation();
 		attachEvents();
+		TextView txtSummoner = (TextView)activity.findViewById(R.id.txtSummonerName);
+		txtSummoner.setText(player.getSummonerName());
 	}
 	
 	protected void goToActivity(Class<?> activityType){

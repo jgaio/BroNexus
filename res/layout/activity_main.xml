@@ -8,36 +8,31 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context=".MainActivity" >
 
-    <Button
-        android:id="@+id/btnFindSummoner"
+    <TextView
+        android:id="@+id/textView1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/txtSummonerName"
-        android:layout_alignParentBottom="true"
-        android:layout_alignRight="@+id/txtSummonerName"
-        android:layout_marginBottom="56dp"
-        android:text="@string/lookup_sum"
-        android:textSize="5pt" />
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="14dp"
+        android:text="@string/summ_name"
+        android:textSize="10pt" />
 
     <EditText
         android:id="@+id/txtSummonerName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/btnFindSummoner"
-       	android:layout_centerHorizontal="true"
-        android:layout_marginBottom="110dp"
-        android:ems="10" >
+        android:layout_below="@+id/textView1"
+        android:layout_centerHorizontal="true"
+        android:ems="10" />
 
-        <requestFocus />
-    </EditText>
-
-    <TextView
+    <Button
+        android:id="@+id/btnFindSummoner"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/txtSummonerName"
-        android:layout_alignLeft="@+id/txtSummonerName"
-        android:layout_marginBottom="72dp"
-        android:textSize="10pt"
-        android:text="@string/summ_name" />
+        android:layout_below="@+id/txtSummonerName"
+        android:layout_centerHorizontal="true"
+        android:text="@string/lookup_sum"
+        android:textSize="5pt" />
 
 </RelativeLayout>

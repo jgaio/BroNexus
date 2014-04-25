@@ -15,6 +15,7 @@ import org.apache.http.client.ClientProtocolException;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.DefaultHttpClient;
+import org.apache.http.util.EntityUtils;
 import org.json.JSONArray;
 import org.json.JSONObject;
 import android.annotation.SuppressLint;
@@ -68,25 +69,49 @@ public class PlayerInfo
         throw new CloneNotSupportedException(); 
     }
     // check if the summoner name is valid
-	//@TargetApi(Build.VERSION_CODES.GINGERBREAD)
 	public int lookupSummoner()
 	{
+		// THIS DOESNT WORK AT ALL
 		// allows us to access the internet
 		//StrictMode.ThreadPolicy policy = new StrictMode.
 		//ThreadPolicy.Builder().permitAll().build();
 		//StrictMode.setThreadPolicy(policy); 
 		// look up the summoner name we are given
 		// url with the summoner name and our key
-		String url = "https:prod.api.pvp.net/api/lol/na/v1.3/summoner/by-name/RiotSchmick?api_key=4c82d2b0-91e8-4376-bfdb-de71b1bad16d";
+		//String url = "https://prod.api.pvp.net/api/lol/na/v1.3/summoner/by-name/RiotSchmick?api_key=4c82d2b0-91e8-4376-bfdb-de71b1bad16d";
+		HttpClient client = new DefaultHttpClient();
+
+		String getURL = "http://prod.api.pvp.net/api/lol/na/v1.3/stats/by-summoner/585897/summary?api_key=4c82d2b0-91e8-4376-bfdb-de71b1bad16d"; //The API service URL
+
+		HttpGet get = new HttpGet(getURL);
+
+		HttpResponse responseGet = null;
+
+		try {
+		
+		responseGet = client.execute(get);
+		HttpEntity resEntityGet = responseGet.getEntity();
+		String response = EntityUtils.toString(resEntityGet);
+		Log.e(PlayerInfo.class.toString(), response);
+		summonerName = "shit worked yo";
+
+		} catch (Exception e) {
+
+		e.printStackTrace();
+
+		}
+		/*
 		//String url = "https://prod.api.pvp.net/api/lol/na/v1.3/summoner/by-name/" + summonerName + "?api_key=4c82d2b0-91e8-4376-bfdb-de71b1bad16d";
 		StringBuilder builder = new StringBuilder();
 		HttpClient client = new DefaultHttpClient();
 		HttpGet httpGet = new HttpGet(url);
+		
 		try 
 		{
 			HttpResponse response = client.execute(httpGet);
 			StatusLine statusLine = response.getStatusLine();
 			int statusCode = statusLine.getStatusCode();
+			// if it finds a valid url, read it
 			if (statusCode == 200)
 			{
 				HttpEntity entity = response.getEntity();
@@ -98,9 +123,11 @@ public class PlayerInfo
 					builder.append(line);
 				}
 			}
+			// if the url was not found, the summoner does not exist. display this to the user somehow
 			else
 			{
 				Log.e(PlayerInfo.class.toString(), "Failed to download file");
+				return -1;
 			}
 		}
 		catch (ClientProtocolException e)
@@ -113,7 +140,7 @@ public class PlayerInfo
 		}
 		// builder.toString() returns our response from the server
 		Log.e(PlayerInfo.class.toString(), builder.toString());
-		
+		*/
 		// if it's successful..
 		// update the numMasteries
 		// update the numRunes
