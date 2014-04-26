@@ -22,6 +22,7 @@
     <string name="sum_name_text">Summoner Name</string>
     <string name="title_activity_information">InformationActivity</string>
     <string name="title_activity_rune">RuneActivity</string>
-    <string name="title_activity_mastery">MasteryActivity</string>
+    <string name="bad_name_text">Summoner name not valid.</string><string name="title_activity_mastery">MasteryActivity</string>
+    
 
 </resources>

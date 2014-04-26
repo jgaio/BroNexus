@@ -5,6 +5,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.app.Activity;
 
 import com.example.bronexus.MainActivity;
@@ -50,17 +51,18 @@ public class MainController
 				String newName = (txtSummonerName.getText()).toString();
 				player.setSummonerName(newName);
 				player.lookupSummoner((MainActivity)activity);
-			//	if (player.getSummonerID() != -1)
-			//	{
-			//		goToInfo();
-				//}
 			}
 		});
 	}
-	private void goToInfo()
+	public void goToInfo()
 	{
 		Intent intent = new Intent(activity, InformationActivity.class);
 		activity.startActivity(intent);
 		activity.finish();
+	}
+	public void badNameEntered()
+	{
+		TextView txtBadName = (TextView)activity.findViewById(R.id.txtBadName);
+		txtBadName.setVisibility(View.VISIBLE);
 	}
 }

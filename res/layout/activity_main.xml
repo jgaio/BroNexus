@@ -35,4 +35,15 @@
         android:text="@string/lookup_sum"
         android:textSize="5pt" />
 
+    <TextView
+        android:id="@+id/txtBadName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/txtSummonerName"
+        android:layout_below="@+id/btnFindSummoner"
+        android:layout_marginTop="64dp"
+        android:text="@string/bad_name_text"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:visibility="invisible" />
+
 </RelativeLayout>

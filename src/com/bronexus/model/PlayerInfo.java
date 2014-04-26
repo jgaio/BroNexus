@@ -25,12 +25,13 @@ import java.util.Map;
 public class PlayerInfo
 {
 	private String summonerName;
-	private Activity activity;
+	private MainActivity activity;
 	private int numMasteries;
 	private int numRunes;
 	private long summonerID;
 	private static PlayerInfo instance = null;
 	private RiotAPI riot;
+	private boolean toInfo;
 	
 	// default constructor
 	public PlayerInfo()
@@ -48,6 +49,7 @@ public class PlayerInfo
 	// reset the stats
 	private void reset()
 	{
+		toInfo = false;
 		numMasteries = -1;
 		numRunes = -1;
 		summonerID = -1;
@@ -76,19 +78,36 @@ public class PlayerInfo
 		        try {
 		        	Map<String, Summoner> newSum =  riot.getSummonerByName(summonerName);
 		    		
-		    		Summoner summoner = newSum.get(summonerName);
-		    		summonerID = summoner.getId();
-		    		if (summonerID != -1)
+		    		if (newSum != null)
 		    		{
-		    			goToInfo();
+		    			Summoner summoner = newSum.get(summonerName);
+		    			summonerID = summoner.getId();
+		    			if (summonerID != -1)
+		    			{
+		    				toInfo = true;
+		    			}
 		    		}
-		        } catch (Exception e) {
+		        }
+		        catch (Exception e) {
 		            e.printStackTrace();
 		        }
 		    }
 		});
 		thread.start();
-		
+		while (thread.isAlive())
+		{
+			// indefinite wait until our code is executed and we are back on main thread
+		}
+		if (toInfo)
+		{
+			// summoner is valid, move to the next screen
+			goToInfo();
+		}
+		else
+		{
+			// output to the player that the name is not valid
+			activity.badNameEntered();
+		}
 		
 	}
 	// getters for attributes
@@ -118,9 +137,7 @@ public class PlayerInfo
 	}
 	private void goToInfo()
 	{
-		Intent intent = new Intent(activity, InformationActivity.class);
-		activity.startActivity(intent);
-		activity.finish();
+		activity.goToInfo();
 	}
 
 }

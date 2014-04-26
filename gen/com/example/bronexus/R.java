@@ -24,16 +24,17 @@ public final class R {
         public static final int ic_launcher=0x7f020000;
     }
     public static final class id {
-        public static final int action_settings=0x7f080014;
+        public static final int action_settings=0x7f080015;
         public static final int btnFindSummoner=0x7f080010;
         public static final int btnMasteries=0x7f080002;
         public static final int btnRunes=0x7f080001;
-        public static final int button1=0x7f080011;
-        public static final int button2=0x7f080012;
-        public static final int button3=0x7f080013;
+        public static final int button1=0x7f080012;
+        public static final int button2=0x7f080013;
+        public static final int button3=0x7f080014;
         public static final int linearLayout1=0x7f080003;
         public static final int textView1=0x7f08000f;
         public static final int txtAssists=0x7f080006;
+        public static final int txtBadName=0x7f080011;
         public static final int txtDeaths=0x7f080005;
         public static final int txtDoubles=0x7f080007;
         public static final int txtKills=0x7f080004;
@@ -63,6 +64,7 @@ public final class R {
         public static final int action_settings=0x7f050001;
         public static final int app_name=0x7f050000;
         public static final int assist_text=0x7f050007;
+        public static final int bad_name_text=0x7f050015;
         public static final int deaths_text=0x7f050006;
         public static final int doubles_text=0x7f05000a;
         public static final int hello_world=0x7f050004;
@@ -77,7 +79,7 @@ public final class R {
         public static final int sum_name_text=0x7f050012;
         public static final int summ_name=0x7f050002;
         public static final int title_activity_information=0x7f050013;
-        public static final int title_activity_mastery=0x7f050015;
+        public static final int title_activity_mastery=0x7f050016;
         public static final int title_activity_rune=0x7f050014;
         public static final int triples_text=0x7f05000b;
         public static final int turrets_text=0x7f05000f;
