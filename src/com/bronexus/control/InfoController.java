@@ -28,7 +28,7 @@ public class InfoController
 		fillInformation();
 		attachEvents();
 		TextView txtSummoner = (TextView)activity.findViewById(R.id.txtSummonerName);
-		txtSummoner.setText(player.getSummonerName());
+		txtSummoner.setText(player.getSummonerName() + " " + player.getSummonerID());
 	}
 	
 	protected void goToActivity(Class<?> activityType){

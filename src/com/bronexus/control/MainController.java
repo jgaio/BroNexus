@@ -49,10 +49,11 @@ public class MainController
 				EditText txtSummonerName = (EditText)activity.findViewById(R.id.txtSummonerName);
 				String newName = (txtSummonerName.getText()).toString();
 				player.setSummonerName(newName);
-				if (player.lookupSummoner() != -1)
-				{
-					goToInfo();
-				}
+				player.lookupSummoner((MainActivity)activity);
+			//	if (player.getSummonerID() != -1)
+			//	{
+			//		goToInfo();
+				//}
 			}
 		});
 	}
