@@ -45,10 +45,31 @@ public class RiotAPI
 	{
 		name = name.replaceAll("//s+", "");
 		String url = baseUrl + "na/v1.4/summoner/by-name/" + name + "?api_key=" + key;
+		Log.v("SummonerID" , url);
 		Map<String, Summoner> summoner = null;
 		try 
 		{
 			summoner = new Gson().fromJson(IOUtils.toString(new URL(url)), new TypeToken<Map<String, Summoner>>(){}.getType());
+		}
+		catch (JsonSyntaxException e)
+		{
+			e.printStackTrace();
+		}
+		catch (IOException e)
+		{
+			e.printStackTrace();
+		}
+		return summoner;
+	}
+	
+	// look up summoner stats by their id
+	public Map<String, SummonerStats> getSummonerByID(long summonerID)
+	{
+		String url = baseUrl +  // blah blah
+		Map<String, SummonerStats> summoner = null;
+		try
+		{
+			summoner = new Gson().fromJson(IOUtils.toString(new URL(url)), new TypeToken<Map<String, SummonerStats>>(){}.getType());
 		}
 		catch (JsonSyntaxException e)
 		{

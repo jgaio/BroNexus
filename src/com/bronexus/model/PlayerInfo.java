@@ -82,6 +82,9 @@ public class PlayerInfo
 		    		{
 		    			Summoner summoner = newSum.get(summonerName);
 		    			summonerID = summoner.getId();
+		    			
+		    			String s = String.valueOf(summonerID);
+		    			Log.v("SummonerID" , s);
 		    			if (summonerID != -1)
 		    			{
 		    				toInfo = true;
@@ -101,10 +104,13 @@ public class PlayerInfo
 		if (toInfo)
 		{
 			// summoner is valid, move to the next screen
+			// getStats from summonerID, then go to next screen
 			goToInfo();
 		}
 		else
 		{
+			String s = String.valueOf(summonerID);
+			Log.v("SummonerID" , s);
 			// output to the player that the name is not valid
 			activity.badNameEntered();
 		}
