@@ -20,6 +20,7 @@ import com.bronexus.model.Summoner;
 import com.example.bronexus.InformationActivity;
 import com.example.bronexus.MainActivity;
 
+import java.util.List;
 import java.util.Map;
 
 public class PlayerInfo
@@ -27,8 +28,10 @@ public class PlayerInfo
 	private String summonerName;
 	private MainActivity activity;
 	private int numMasteries;
-	private int numRunes;
-	private long summonerID;
+	private int numRunes, doubleKill, tripleKill, quadraKill, pentaKill;
+	private int turretsKilled, minionsKilled, sessionWins, sessionLosses;
+	private int champDeaths, champKills, champAssists;
+	private long summonerID, modifyDate;
 	private static PlayerInfo instance = null;
 	private RiotAPI riot;
 	private boolean toInfo;
@@ -77,7 +80,6 @@ public class PlayerInfo
 		    public void run() {
 		        try {
 		        	Map<String, Summoner> newSum =  riot.getSummonerByName(summonerName);
-		    		
 		    		if (newSum != null)
 		    		{
 		    			Summoner summoner = newSum.get(summonerName);
@@ -87,6 +89,32 @@ public class PlayerInfo
 		    			Log.v("SummonerID" , s);
 		    			if (summonerID != -1)
 		    			{
+		    				// random test to parse json, will delete later
+		    				RankedStats newRanked = riot.getRankedStats(summonerID);
+		    				List<ChampionStats> champLIst = newRanked.getChampions();
+		    				for(ChampionStats cStats : champLIst)
+		    				{
+		    					if(cStats.getId() == 0)
+		    					{
+		    						AggregatedStats aStats = cStats.getStats();
+		    						doubleKill = aStats.getTotalDoubleKills();
+		    						tripleKill = aStats.getTotalTripleKills();
+		    						quadraKill = aStats.getTotalQuadraKills();
+		    						pentaKill = aStats.getTotalPentaKills();
+		    						minionsKilled = aStats.getTotalMinionKill();
+		    						turretsKilled = aStats.getTotalTurretsKilled();
+		    						sessionWins = aStats.getTotalSessionsWon();
+		    						sessionLosses = aStats.getTotalSessionsLost();
+		    						champDeaths = aStats.getTotalDeathsPerSession();
+		    						champKills = aStats.getTotalChampionKills();
+		    						champAssists = aStats.getTotalAssists();		
+		    					}
+		    				}
+		    				
+		    				//ChampionStats cStats = champLIst.get(0);
+		    				
+		    				//AggregatedStats aStats = cStats.getStats();
+		    				//test = aStats.getTotalGoldEarned();
 		    				toInfo = true;
 		    			}
 		    		}
@@ -116,6 +144,7 @@ public class PlayerInfo
 		}
 		
 	}
+
 	// getters for attributes
 	public String getSummonerName()
 	{
@@ -127,7 +156,53 @@ public class PlayerInfo
 	}
 	public long getSummonerID()
 	{
+		// testing random output, will delete later
+		//return Long.valueOf(test);
 		return summonerID;
+	}
+	public int getDoubleKills()
+	{
+		return doubleKill;
+	}
+	public int getTripleKills()
+	{
+		return tripleKill;
+	}
+	public int getQuadraKills()
+	{
+		return quadraKill;
+	}
+	public int getPentaKills()
+	{
+		return pentaKill;
+	}
+	public int getTurretsKilled()
+	{
+		return turretsKilled;
+	}
+	public int getMinionsKilled()
+	{
+		return minionsKilled;
+	}
+	public int getWins()
+	{
+		return sessionWins;
+	}
+	public int getLosses()
+	{
+		return sessionLosses;
+	}
+	public int getChampDeaths()
+	{
+		return champDeaths;
+	}
+	public int getChampKills()
+	{
+		return champKills;
+	}
+	public int getChampAssists()
+	{
+		return champAssists;
 	}
 	public void setSummonerID(long newSummID)
 	{
@@ -145,5 +220,4 @@ public class PlayerInfo
 	{
 		activity.goToInfo();
 	}
-
 }

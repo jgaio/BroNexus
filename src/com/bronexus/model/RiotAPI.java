@@ -62,14 +62,39 @@ public class RiotAPI
 		return summoner;
 	}
 	
-	// look up summoner stats by their id
-	public Map<String, SummonerStats> getSummonerByID(long summonerID)
+	// look up ranked stats
+	public RankedStats getRankedStats(long summonerID)
 	{
-		String url = baseUrl +  // blah blah
+		String url = baseUrl + "na/v1.3/stats/by-summoner/" + summonerID + "/ranked?season=SEASON4&api_key=" + key;
+		// Temp print out url
+		Log.v("URL", url);
+		RankedStats rankedStats = null;
+		try
+		{
+			rankedStats = new Gson().fromJson(IOUtils.toString(new URL(url)), RankedStats.class);
+		}
+		catch (JsonSyntaxException e)
+		{
+			e.printStackTrace();
+		}
+		catch (IOException e)
+		{
+			e.printStackTrace();
+		}
+		return rankedStats;
+	}
+	
+	// look up summoner stats by their id
+	/*public Map<String, SummonerStats> getSummonerByID(long summonerID)
+	{
+		String url = baseUrl + "na/v1.3/stats/by-summoner/" + summonerID + "/ranked?season=SEASON4&api_key=" + key;
+		// Temp print out url
+		Log.v("URL", url);
 		Map<String, SummonerStats> summoner = null;
 		try
 		{
 			summoner = new Gson().fromJson(IOUtils.toString(new URL(url)), new TypeToken<Map<String, SummonerStats>>(){}.getType());
+			System.out.println(summoner);
 		}
 		catch (JsonSyntaxException e)
 		{
@@ -80,5 +105,5 @@ public class RiotAPI
 			e.printStackTrace();
 		}
 		return summoner;
-	}
+	}*/
 }

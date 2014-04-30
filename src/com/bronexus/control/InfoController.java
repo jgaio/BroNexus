@@ -12,7 +12,9 @@ import android.app.Activity;
 import com.example.bronexus.InformationActivity;
 import com.bronexus.view.InfoView;
 import com.example.bronexus.R;
+import com.bronexus.model.AggregatedStats;
 import com.bronexus.model.PlayerInfo;
+import com.bronexus.model.RankedStats;
 
 public class InfoController
 {
@@ -28,7 +30,31 @@ public class InfoController
 		fillInformation();
 		attachEvents();
 		TextView txtSummoner = (TextView)activity.findViewById(R.id.txtSummonerName);
+		TextView txtDouble = (TextView)activity.findViewById(R.id.txtDoubles);
+		TextView txtTriple = (TextView)activity.findViewById(R.id.txtTriples);
+		TextView txtQuadra = (TextView)activity.findViewById(R.id.txtQuadras);
+		TextView txtPenta = (TextView)activity.findViewById(R.id.txtPentas);
+		TextView txtKill = (TextView)activity.findViewById(R.id.txtKills);
+		TextView txtDeath = (TextView)activity.findViewById(R.id.txtDeaths);
+		TextView txtAssist = (TextView)activity.findViewById(R.id.txtAssists);
+		TextView txtWin = (TextView)activity.findViewById(R.id.txtWins);
+		TextView txtLosses = (TextView)activity.findViewById(R.id.txtLosses);
+		TextView txtMinion = (TextView)activity.findViewById(R.id.txtMinions);
+		TextView txtTurret = (TextView)activity.findViewById(R.id.txtTurrets);
+		
 		txtSummoner.setText(player.getSummonerName() + " " + player.getSummonerID());
+		
+		txtDouble.setText("Double Kills: " + player.getDoubleKills());
+		txtTriple.setText("Triple Kills: " + player.getTripleKills());
+		txtQuadra.setText("Quadra Kills: " + player.getQuadraKills());
+		txtPenta.setText("Penta Kills: " + player.getPentaKills());
+		txtKill.setText("Kills: " + player.getChampKills());
+		txtDeath.setText("Deaths: " + player.getChampDeaths());
+		txtAssist.setText("Assists: " + player.getChampAssists());
+		txtWin.setText("Wins: " + player.getWins());
+		txtLosses.setText("Losses: " + player.getLosses());
+		txtMinion.setText("Minions Killed: " + player.getMinionsKilled());
+		txtTurret.setText("Turrets Destroyed: " + player.getTurretsKilled());
 	}
 	
 	protected void goToActivity(Class<?> activityType){
