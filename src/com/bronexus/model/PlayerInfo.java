@@ -79,6 +79,7 @@ public class PlayerInfo
 		    @Override
 		    public void run() {
 		        try {
+		        	summonerName = summonerName.replaceAll("\\s", "");
 		        	Map<String, Summoner> newSum =  riot.getSummonerByName(summonerName);
 		    		if (newSum != null)
 		    		{
