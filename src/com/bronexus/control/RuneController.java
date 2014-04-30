@@ -5,6 +5,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.app.Activity;
 
 import com.example.bronexus.MainActivity;
@@ -29,6 +30,8 @@ public class RuneController
 		activity.setContentView(R.layout.activity_rune);
 		rView = new RuneView(activity);
 		player = PlayerInfo.instance();
+		TextView txtSummonerName = (TextView)activity.findViewById(R.id.txtSummonerNameRune);
+		txtSummonerName.setText(player.getSummonerName());
 		attachEvents();
 	}
 	protected void goToActivity(Class<?> activityType){

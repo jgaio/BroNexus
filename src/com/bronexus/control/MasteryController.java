@@ -4,7 +4,7 @@ import android.content.Intent;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
-import android.widget.EditText;
+import android.widget.TextView;
 import android.app.Activity;
 
 import com.example.bronexus.MainActivity;
@@ -29,6 +29,8 @@ public class MasteryController
 		activity.setContentView(R.layout.activity_mastery);
 		mView = new MasteryView(activity);
 		player = PlayerInfo.instance();
+		TextView txtSummonerName = (TextView)activity.findViewById(R.id.txtSummonerNameMastery);
+		txtSummonerName.setText(player.getSummonerName());
 		attachEvents();
 	}
 	protected void goToActivity(Class<?> activityType){

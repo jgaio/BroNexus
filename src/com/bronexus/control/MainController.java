@@ -50,7 +50,11 @@ public class MainController
 				EditText txtSummonerName = (EditText)activity.findViewById(R.id.txtSummonerName);
 				String newName = (txtSummonerName.getText()).toString();
 				player.setSummonerName(newName);
-				player.lookupSummoner((MainActivity)activity);
+				if (player.lookupSummoner() == true)
+				{
+					goToInfo();
+				}
+				else badNameEntered();
 			}
 		});
 	}
@@ -58,7 +62,7 @@ public class MainController
 	{
 		Intent intent = new Intent(activity, InformationActivity.class);
 		activity.startActivity(intent);
-		activity.finish();
+		//activity.finish();
 	}
 	public void badNameEntered()
 	{

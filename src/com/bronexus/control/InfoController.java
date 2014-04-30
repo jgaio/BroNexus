@@ -10,6 +10,8 @@ import android.widget.TextView;
 import android.app.Activity;
 
 import com.example.bronexus.InformationActivity;
+import com.example.bronexus.MasteryActivity;
+import com.example.bronexus.RuneActivity;
 import com.bronexus.view.InfoView;
 import com.example.bronexus.R;
 import com.bronexus.model.AggregatedStats;
@@ -75,6 +77,35 @@ public class InfoController
 	
 	private void attachEvents() 
 	{
-		// button clicks, etc..
+		Button btnMasteries = (Button)activity.findViewById(R.id.btnMasteries);
+		Button btnRunes = (Button)activity.findViewById(R.id.btnRunes);
+		btnMasteries.setOnClickListener(new OnClickListener()
+		{
+			public void onClick(View v)
+			{
+				goToMasteries();
+			}
+		});
+		btnRunes.setOnClickListener(new OnClickListener()
+		{
+			public void onClick(View v)
+			{
+				goToRunes();
+			}
+		});
+	}
+	private void goToMasteries()
+	{
+		// should probably pull the mastery information here
+		Intent intent = new Intent(activity, MasteryActivity.class);
+		activity.startActivity(intent);
+		//activity.finish();
+	}
+	private void goToRunes()
+	{
+		// should probably pull the rune information here
+		Intent intent = new Intent(activity, RuneActivity.class);
+		activity.startActivity(intent);
+		//activity.finish();
 	}
 }

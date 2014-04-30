@@ -34,7 +34,7 @@ public class PlayerInfo
 	private long summonerID, modifyDate;
 	private static PlayerInfo instance = null;
 	private RiotAPI riot;
-	private boolean toInfo;
+	private boolean successful = false;
 	
 	// default constructor
 	public PlayerInfo()
@@ -52,7 +52,6 @@ public class PlayerInfo
 	// reset the stats
 	private void reset()
 	{
-		toInfo = false;
 		numMasteries = -1;
 		numRunes = -1;
 		summonerID = -1;
@@ -71,19 +70,20 @@ public class PlayerInfo
         throw new CloneNotSupportedException(); 
     }
     // check if the summoner name is valid
-	public void lookupSummoner(MainActivity newAct)
+	public boolean lookupSummoner()
 	{
-		activity = newAct;
 		// let the RiotAPI handle it
 		Thread thread = new Thread(new Runnable(){
 		    @Override
 		    public void run() {
 		        try {
-		        	summonerName = summonerName.replaceAll("\\s", "");
-		        	Map<String, Summoner> newSum =  riot.getSummonerByName(summonerName);
+		        	String tempName = summonerName.toLowerCase();
+		        	tempName = tempName.replaceAll("\\s", "");
+		        	Log.e("summoner name lower", tempName);
+		        	Map<String, Summoner> newSum =  riot.getSummonerByName(tempName);
 		    		if (newSum != null)
 		    		{
-		    			Summoner summoner = newSum.get(summonerName);
+		    			Summoner summoner = newSum.get(tempName);
 		    			summonerID = summoner.getId();
 		    			
 		    			String s = String.valueOf(summonerID);
@@ -116,7 +116,7 @@ public class PlayerInfo
 		    				
 		    				//AggregatedStats aStats = cStats.getStats();
 		    				//test = aStats.getTotalGoldEarned();
-		    				toInfo = true;
+		    				successful = true;
 		    			}
 		    		}
 		        }
@@ -130,20 +130,7 @@ public class PlayerInfo
 		{
 			// indefinite wait until our code is executed and we are back on main thread
 		}
-		if (toInfo)
-		{
-			// summoner is valid, move to the next screen
-			// getStats from summonerID, then go to next screen
-			goToInfo();
-		}
-		else
-		{
-			String s = String.valueOf(summonerID);
-			Log.v("SummonerID" , s);
-			// output to the player that the name is not valid
-			activity.badNameEntered();
-		}
-		
+		return successful;
 	}
 
 	// getters for attributes
@@ -216,9 +203,5 @@ public class PlayerInfo
 	public int getNumRunes()
 	{
 		return numRunes;
-	}
-	private void goToInfo()
-	{
-		activity.goToInfo();
 	}
 }

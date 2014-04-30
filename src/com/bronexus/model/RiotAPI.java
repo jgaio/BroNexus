@@ -43,7 +43,8 @@ public class RiotAPI
 	// look up the summoner by their name
 	public Map<String, Summoner> getSummonerByName(String name)
 	{
-		name = name.replaceAll("\\s", "");
+		Log.e("inside riot", name);
+		//name = name.replaceAll("\\s", "");
 		String url = baseUrl + "na/v1.4/summoner/by-name/" + name + "?api_key=" + key;
 		Map<String, Summoner> summoner = null;
 		try 
