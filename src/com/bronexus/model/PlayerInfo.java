@@ -20,8 +20,10 @@ import com.bronexus.model.Summoner;
 import com.example.bronexus.InformationActivity;
 import com.example.bronexus.MainActivity;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 public class PlayerInfo
 {
@@ -35,6 +37,7 @@ public class PlayerInfo
 	private static PlayerInfo instance = null;
 	private RiotAPI riot;
 	private boolean successful = false;
+	List<String> masteryNameList = new ArrayList<String>();
 	
 	// default constructor
 	public PlayerInfo()
@@ -90,7 +93,7 @@ public class PlayerInfo
 		    			Log.v("SummonerID" , s);
 		    			if (summonerID != -1)
 		    			{
-		    				// random test to parse json, will delete later
+		    				// Parse Ranked Stats
 		    				RankedStats newRanked = riot.getRankedStats(summonerID);
 		    				List<ChampionStats> champLIst = newRanked.getChampions();
 		    				for(ChampionStats cStats : champLIst)
@@ -112,10 +115,21 @@ public class PlayerInfo
 		    					}
 		    				}
 		    				
-		    				//ChampionStats cStats = champLIst.get(0);
+		    				// Parse Mastery Pages
 		    				
-		    				//AggregatedStats aStats = cStats.getStats();
-		    				//test = aStats.getTotalGoldEarned();
+		    				Map<String, MasteryPages> newMasteryPages = riot.getMasteryPages(summonerID);
+		    				MasteryPages mp = newMasteryPages.get(String.valueOf(summonerID));
+		    				Log.v("Test", String.valueOf(mp.getSummonerId()));
+		    				Set<MasteryPage> masterySet = mp.getPages();
+		    				for (MasteryPage tempSet : masterySet) 
+		    				{
+		    					Log.v("Mastery" , tempSet.getName());
+		    					String tempS = tempSet.getName();
+		    					masteryNameList.add(tempS);
+		    					
+		   					}
+
+
 		    				successful = true;
 		    			}
 		    		}
@@ -147,6 +161,10 @@ public class PlayerInfo
 		// testing random output, will delete later
 		//return Long.valueOf(test);
 		return summonerID;
+	}
+	public List<String> getMasteryNames()
+	{
+		return masteryNameList;
 	}
 	public int getDoubleKills()
 	{

@@ -1,9 +1,13 @@
 package com.bronexus.control;
 
+import java.util.List;
+
 import android.content.Intent;
+import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.app.Activity;
 
@@ -19,6 +23,7 @@ public class MasteryController
 	Activity activity;
 	MasteryView mView;
 	PlayerInfo player;
+	TextView rowTextView;
 	
 	public MasteryController(MasteryActivity act)
 	{
@@ -32,6 +37,22 @@ public class MasteryController
 		TextView txtSummonerName = (TextView)activity.findViewById(R.id.txtSummonerNameMastery);
 		txtSummonerName.setText(player.getSummonerName());
 		attachEvents();
+		
+		StringBuilder stringBuilder = new StringBuilder();
+		List<String> masteryNameList = player.getMasteryNames();
+
+		for (int i = 0; i < masteryNameList.size(); i++)
+		{
+			stringBuilder.append(masteryNameList.get(i) + "\n");
+		}
+		
+		String masteryString = stringBuilder.toString();
+		
+		TextView masteryText = (TextView)activity.findViewById((R.id.mastery1));
+		masteryText.setText(masteryString);
+
+		
+		//masteryText.setText(temp2);
 	}
 	protected void goToActivity(Class<?> activityType){
 		//activity.finish();

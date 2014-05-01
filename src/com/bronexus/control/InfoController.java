@@ -2,11 +2,13 @@ package com.bronexus.control;
 
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
+import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.RemoteViews;
 import android.app.Activity;
 
 import com.example.bronexus.InformationActivity;
@@ -31,6 +33,8 @@ public class InfoController
 		player = PlayerInfo.instance();
 		fillInformation();
 		attachEvents();
+		
+		// Create Text Views
 		TextView txtSummoner = (TextView)activity.findViewById(R.id.txtSummonerName);
 		TextView txtDouble = (TextView)activity.findViewById(R.id.txtDoubles);
 		TextView txtTriple = (TextView)activity.findViewById(R.id.txtTriples);
@@ -44,8 +48,10 @@ public class InfoController
 		TextView txtMinion = (TextView)activity.findViewById(R.id.txtMinions);
 		TextView txtTurret = (TextView)activity.findViewById(R.id.txtTurrets);
 		
-		txtSummoner.setText(player.getSummonerName() + " " + player.getSummonerID());
+
 		
+		// Set Text Views to values of respective stats
+		txtSummoner.setText(player.getSummonerName() + " " + player.getSummonerID());
 		txtDouble.setText("Double Kills: " + player.getDoubleKills());
 		txtTriple.setText("Triple Kills: " + player.getTripleKills());
 		txtQuadra.setText("Quadra Kills: " + player.getQuadraKills());
@@ -57,6 +63,17 @@ public class InfoController
 		txtLosses.setText("Losses: " + player.getLosses());
 		txtMinion.setText("Minions Killed: " + player.getMinionsKilled());
 		txtTurret.setText("Turrets Destroyed: " + player.getTurretsKilled());
+		
+		// Iterate list for mastery pages
+		/*for (int i = 0; i < 2; i++)
+		{
+			String temp2 = player.getMasteryNames(i);
+			Button masteryButton = (Button)activity.findViewById(R.id.button1);
+			masteryButton.setText(temp2);
+		}*/
+		
+
+
 	}
 	
 	protected void goToActivity(Class<?> activityType){
