@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">BroNexus</string>
+    <string name="app_name">LoL Stats</string>
     <string name="action_settings">Settings</string>
     <string name="summ_name">Please enter summoner name:</string>
     <string name="lookup_sum">Look up</string>
