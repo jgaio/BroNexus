@@ -62,6 +62,27 @@ public class RiotAPI
 		return summoner;
 	}
 	
+	// look up rune
+	public Rune getRuneById(int id)
+	{
+		String url = baseUrl + "static-data/na/v1.2/rune/" + String.valueOf(id) + "?api_key=" + key;
+		Log.e("url for rune", url);
+		Rune newRune = null;
+		try
+		{
+			newRune = new Gson().fromJson(IOUtils.toString(new URL(url)), new TypeToken<Rune>(){}.getType());
+		}
+		catch (JsonSyntaxException e)
+		{
+			e.printStackTrace();
+		}
+		catch (IOException e)
+		{
+			e.printStackTrace();
+		}
+		return newRune;
+	}
+	
 	// look up ranked stats
 	public RankedStats getRankedStats(long summonerID)
 	{
@@ -105,6 +126,27 @@ public class RiotAPI
 		}
 		
 		return masteryPages;
+	}
+	
+	// look up rune pages
+	public Map<String, RunePages> getRunePages(long summonerId)
+	{
+		String url = baseUrl + "na/v1.4/summoner/" + summonerId + "/runes?api_key=" + key;
+		Log.e("rune pages", url);
+		Map<String, RunePages> runePages = null;
+		try
+		{
+			runePages = new Gson().fromJson(IOUtils.toString(new URL(url)), new TypeToken<Map<String, RunePages>>(){}.getType());
+		}
+		catch (JsonSyntaxException e)
+		{
+			e.printStackTrace();
+		}
+		catch (IOException e)
+		{
+			e.printStackTrace();
+		}
+		return runePages;
 	}
 }
 

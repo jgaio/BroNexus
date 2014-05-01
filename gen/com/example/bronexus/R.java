@@ -13,6 +13,11 @@ public final class R {
     public static final class dimen {
         /**  Default screen margins, per the Android Design guidelines. 
 
+         Example customization of dimensions originally defined in res/values/dimens.xml
+         (such as screen margins) for screens with more than 820dp of available width. This
+         would include 7" and 10" devices in landscape (~960dp and ~1280dp respectively).
+    
+
          Customize dimensions originally defined in res/values/dimens.xml (such as
          screen margins) for sw720dp devices (e.g. 10" tablets) in landscape here.
     
@@ -27,15 +32,14 @@ public final class R {
         public static final int leaguewallfinal=0x7f020003;
     }
     public static final class id {
-        public static final int action_settings=0x7f080017;
+        public static final int action_settings=0x7f080018;
         public static final int btnFindSummoner=0x7f080010;
         public static final int btnMasteries=0x7f080002;
         public static final int btnRunes=0x7f080001;
+        public static final int btnRunesSubmit=0x7f080015;
         public static final int linearLayout1=0x7f080003;
         public static final int mastery1=0x7f08000f;
-        public static final int textView2=0x7f080014;
-        public static final int textView3=0x7f080016;
-        public static final int textView4=0x7f080015;
+        public static final int spinRunes=0x7f080014;
         public static final int txtAssists=0x7f080006;
         public static final int txtBadName=0x7f080011;
         public static final int txtDeaths=0x7f080005;
@@ -45,6 +49,8 @@ public final class R {
         public static final int txtMinions=0x7f08000d;
         public static final int txtPentas=0x7f08000a;
         public static final int txtQuadras=0x7f080009;
+        public static final int txtRunePageDetails=0x7f080017;
+        public static final int txtRunePageName=0x7f080016;
         public static final int txtSummonerName=0x7f080000;
         public static final int txtSummonerNameMastery=0x7f080012;
         public static final int txtSummonerNameRune=0x7f080013;
@@ -57,6 +63,8 @@ public final class R {
         public static final int activity_main=0x7f030001;
         public static final int activity_mastery=0x7f030002;
         public static final int activity_rune=0x7f030003;
+        public static final int activity_rune_detail=0x7f030004;
+        public static final int fragment_rune_detail=0x7f030005;
     }
     public static final class menu {
         public static final int info=0x7f070000;
@@ -64,6 +72,7 @@ public final class R {
         public static final int main=0x7f070002;
         public static final int mastery=0x7f070003;
         public static final int rune=0x7f070004;
+        public static final int rune_detail=0x7f070005;
     }
     public static final class string {
         public static final int action_settings=0x7f050001;
@@ -86,6 +95,7 @@ public final class R {
         public static final int title_activity_information=0x7f050013;
         public static final int title_activity_mastery=0x7f050016;
         public static final int title_activity_rune=0x7f050014;
+        public static final int title_activity_rune_detail=0x7f050017;
         public static final int triples_text=0x7f05000b;
         public static final int turrets_text=0x7f05000f;
         public static final int wins_text=0x7f050008;

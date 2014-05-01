@@ -38,6 +38,11 @@ public class PlayerInfo
 	private RiotAPI riot;
 	private boolean successful = false;
 	List<String> masteryNameList = new ArrayList<String>();
+	private Map<String, RunePages> runePages;
+	private String currentRunePage = null;
+	private String currentRunePageText = null;
+	private String currentRuneName;
+	private int currentRuneId;
 	
 	// default constructor
 	public PlayerInfo()
@@ -72,6 +77,36 @@ public class PlayerInfo
     public Object clone() throws CloneNotSupportedException {
         throw new CloneNotSupportedException(); 
     }
+ // get the name of a rune
+    public String getRuneName(int id)
+    {
+    	currentRuneId = id;
+    	Thread thread = new Thread(new Runnable()
+    	{
+		    public void run() 
+		    {
+		        try 
+		        {
+		        		Log.e("getting name", String.valueOf(currentRuneId));
+		        		Rune newRune = riot.getRuneById(currentRuneId);
+		        		Log.e("got name for", String.valueOf(newRune.getId()));
+		        		currentRuneName = newRune.getName();
+		        		Log.e("name is", newRune.getName());
+		        		Log.e("or is also", currentRuneName);
+		        }
+		        catch (Exception e)
+		        {
+		        	e.printStackTrace();
+		        }
+		    }
+    	});
+    	thread.start();
+    	while (thread.isAlive())
+    	{
+    		// do nothing
+    	}
+    	return currentRuneName;
+    }
     // check if the summoner name is valid
 	public boolean lookupSummoner()
 	{
@@ -80,6 +115,7 @@ public class PlayerInfo
 		    @Override
 		    public void run() {
 		        try {
+		        	masteryNameList = new ArrayList<String>();
 		        	String tempName = summonerName.toLowerCase();
 		        	tempName = tempName.replaceAll("\\s", "");
 		        	Log.e("summoner name lower", tempName);
@@ -129,6 +165,8 @@ public class PlayerInfo
 		    					
 		   					}
 
+		    				// get rune pages
+		    				runePages = riot.getRunePages(summonerID);
 
 		    				successful = true;
 		    			}
@@ -221,5 +259,25 @@ public class PlayerInfo
 	public int getNumRunes()
 	{
 		return numRunes;
+	}
+	public Map<String, RunePages> getPages()
+	{
+		return runePages;
+	}
+	public String getCurrentRunePage()
+	{
+		return currentRunePage;
+	}
+	public void updateCurrentRunePage(String pageName)
+	{
+		currentRunePage = pageName;
+	}
+	public String getCurrentRunePageText()
+	{
+		return currentRunePageText;
+	}
+	public void updateCurrentRunePageText(String newText)
+	{
+		currentRunePageText = newText;
 	}
 }
